@@ -1,0 +1,1008 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Rahul Kushwaha — Java Full Stack Developer · Mumbai</title>
+  <meta name="description" content="Java Full Stack Developer with 3+ years of experience designing and scaling distributed, high-availability systems using Java, Spring Boot, React, and AWS." />
+  <meta property="og:title" content="Rahul Kushwaha — Java Full Stack Developer" />
+  <meta property="og:description" content="Java Full Stack Developer with 3+ years of experience designing and scaling distributed, high-availability systems using Java, Spring Boot, React, and AWS." />
+  <meta property="og:image" content="/assets/og-image.png" />
+  <meta name="robots" content="index, follow" />
+  
+  <!-- Preconnect and Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,600;1,9..40,400&family=Inter:wght@300;400;600&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  
+  <!-- CSS Entrypoint -->
+  <link rel="stylesheet" href="/src/style.css">
+</head>
+<body class="bg-void-black text-pale-wire font-sans select-none antialiased">
+  
+  <!-- Skip Link for Accessibility -->
+  <a href="#contact-section" class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-electric-indigo focus:text-void-black focus:font-mono focus:rounded-sm focus:outline-none">
+    Skip to contact
+  </a>
+  <!-- Fixed Top Header (Messenger Style) -->
+  <header id="chat-header" class="fixed top-0 left-0 right-0 z-30 bg-void-black/85 backdrop-blur-md border-b border-white/5 opacity-0 pointer-events-none transition-all duration-300 transform -translate-y-2 select-none">
+    <div class="max-w-[720px] mx-auto px-4 py-3 flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <div class="relative shrink-0">
+          <img src="/assets/avatar-rahul.png" alt="Rahul Avatar" class="w-8 h-8 rounded-full border border-electric-indigo/20 object-cover" />
+          <span class="absolute bottom-0 right-0 w-2 h-2 rounded-full bg-emerald-500 border-2 border-void-black"></span>
+        </div>
+        <div>
+          <div class="font-sans text-xs md:text-sm font-semibold text-pale-wire leading-tight">Rahul Kushwaha</div>
+          <div class="font-mono text-[9px] text-muted-fog">active_now</div>
+        </div>
+      </div>
+      
+      <button id="scroll-to-top-btn" class="font-mono text-[10px] uppercase tracking-wider text-muted-fog hover:text-electric-indigo px-2.5 py-1 bg-white/5 border border-white/10 rounded-sm hover:border-electric-indigo/50 transition-all cursor-pointer">
+        ↑ top
+      </button>
+    </div>
+  </header>
+
+  <!-- Fixed Background Particle Canvas -->
+  <div id="canvas-container" class="fixed inset-0 -z-10 pointer-events-none opacity-40"></div>
+
+  <!-- Top-Right Fixed Status Indicator / Blinking Terminal Cursor -->
+  <div class="fixed top-6 right-6 z-40 hidden md:flex items-center gap-2 px-3 py-1.5 bg-deep-slate/80 backdrop-blur-md border border-white/5 rounded-sm font-mono text-[11px] text-muted-fog">
+    <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 cursor-blink"></span>
+    <span>status: active_conversations</span>
+  </div>
+
+  <!-- Main Scroll Container -->
+  <main class="w-full min-h-screen flex flex-col items-center snap-container">
+    
+    <!-- FRAME 0: Landing / Hero -->
+    <section id="hero" class="w-full min-h-screen flex flex-col justify-between items-center p-6 md:p-12 relative snap-section" aria-label="Hero Section">
+      <div></div> <!-- Spacer -->
+
+      <div class="w-full max-w-[720px] text-left">
+        <!-- Terminal typing display -->
+        <div id="hero-command" class="font-mono text-base md:text-lg text-pale-wire mb-4 flex items-center min-h-[28px]">
+          <span class="text-electric-indigo font-bold">rahul@portfolio:~$</span>
+          <span class="ml-2 inline-block typing-cursor border-r-2 border-electric-indigo">./introduce_yourself</span>
+        </div>
+
+        <div id="hero-output" class="hidden opacity-0 transition-all duration-700 space-y-4">
+          <div class="font-mono text-xs md:text-sm text-muted-fog select-none">> Initialising...</div>
+          
+          <div class="space-y-2 mt-6">
+            <h1 class="text-4xl md:text-5xl lg:text-6xl font-mono font-bold text-pale-wire leading-[1.07] select-text">
+              RAHUL KUSHWAHA
+            </h1>
+            <p class="text-lg md:text-xl font-sans font-light text-muted-fog select-text">
+              Java Full Stack Developer
+            </p>
+            <p class="font-mono text-xs md:text-sm text-electric-indigo select-text">
+              Mumbai · AWS Certified · Claude Certified Architect
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Scroll Cue -->
+      <div id="scroll-cue" class="flex flex-col items-center gap-2 mb-4 animate-bounce select-none transition-opacity duration-300">
+        <span class="font-mono text-[10px] uppercase tracking-[0.2em] text-muted-fog">scroll to chat</span>
+        <svg class="w-4 h-4 text-electric-indigo" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+        </svg>
+      </div>
+    </section>
+
+    <!-- Chat Stream Container -->
+    <div class="w-full max-w-[720px] px-4 md:px-6 py-12 md:py-24 space-y-24 md:space-y-36">
+      
+      <!-- FRAME 1: Who are you? -->
+      <section class="chat-section opacity-0 space-y-6 snap-section" data-section="who-are-you" aria-label="Who are you?">
+        <!-- Question Bubble (User) -->
+        <div class="flex items-start gap-3 justify-start" role="log" aria-live="polite">
+          <img src="/assets/avatar-user.png" alt="Guest Avatar" class="w-10 h-10 md:w-12 md:h-12 rounded-full border border-white/10 object-cover shrink-0 select-none" />
+          <div class="bg-deep-slate px-4 py-3 rounded-lg rounded-tl-none max-w-[85%] text-sm text-muted-fog font-mono min-h-[44px] flex items-center">
+            <span class="typing-text" data-text="Who are you?"></span>
+          </div>
+        </div>
+
+        <!-- Answer Bubble (Rahul) -->
+        <div class="flex items-start gap-3 justify-end invisible" role="log" aria-live="polite">
+          <div class="bg-electric-indigo/5 border border-electric-indigo/20 px-5 py-4 rounded-lg rounded-tr-none max-w-[85%] text-[15px] md:text-[16px] text-pale-wire leading-[1.75] font-sans space-y-4 shadow-sm select-text">
+            <div class="line-reveal">I'm Rahul — a Java Full Stack Developer at Deloitte, Mumbai. In <span class="text-ember font-mono font-bold">3+ years</span> I've shipped 30+ production APIs, cut API latency by <span class="text-ember font-mono font-bold">20%</span>, and maintained <span class="text-ember font-mono font-bold">99.5%+ uptime</span> across all client-facing services.</div>
+            <div class="line-reveal">I work across the full stack — Java backends, React/Angular frontends, cloud-native AWS services — with a focus on performance, distributed event-driven systems, and shipping code that holds up under real production load.</div>
+            <div class="line-reveal"><span class="text-ember font-mono font-bold">AWS Certified Solutions Architect</span>. <span class="text-ember font-mono font-bold">Claude Certified Architect</span>. Builder of things that don't break in production.</div>
+          </div>
+          <img src="/assets/avatar-rahul.png" alt="Rahul Avatar" class="w-10 h-10 md:w-12 md:h-12 rounded-full border border-electric-indigo/20 object-cover shrink-0 select-none" />
+        </div>
+      </section>
+
+      <!-- FRAME 2: What do you do? -->
+      <section class="chat-section opacity-0 space-y-6 snap-section" data-section="what-do-you-do" aria-label="What do you actually do day-to-day?">
+        <div class="flex items-start gap-3 justify-start" role="log" aria-live="polite">
+          <img src="/assets/avatar-user.png" alt="Guest Avatar" class="w-10 h-10 md:w-12 md:h-12 rounded-full border border-white/10 object-cover shrink-0 select-none" />
+          <div class="bg-deep-slate px-4 py-3 rounded-lg rounded-tl-none max-w-[85%] text-sm text-muted-fog font-mono min-h-[44px] flex items-center">
+            <span class="typing-text" data-text="What do you actually do day-to-day?"></span>
+          </div>
+        </div>
+
+        <div class="flex items-start gap-3 justify-end invisible" role="log" aria-live="polite">
+          <div class="w-full max-w-[85%] space-y-6">
+            <div class="bg-electric-indigo/5 border border-electric-indigo/20 px-5 py-4 rounded-lg rounded-tr-none text-[15px] md:text-[16px] text-pale-wire leading-[1.75] font-sans select-text">
+              I own end-to-end full-stack feature delivery and observability at Deloitte — designing production REST APIs, shipping React/Angular 21 frontends, building cloud-native services on AWS, and coordinating production releases across 10+ Agile teams.
+            </div>
+            
+            <!-- 3-Column Card Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+              <!-- Card 1 -->
+              <div class="bg-glass border border-white/5 p-4 rounded-lg flex flex-col justify-between min-h-[140px] hover:border-electric-indigo hover:-translate-y-1 transition-all duration-300 group">
+                <div class="space-y-2 select-text">
+                  <div class="flex items-center gap-2 text-electric-indigo">
+                    <svg class="w-4 h-4 shrink-0 transition-transform duration-300 group-hover:rotate-12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                    <span class="font-mono text-xs font-bold uppercase tracking-wider select-text">Backend Systems</span>
+                  </div>
+                  <p class="text-xs text-muted-fog select-text">Design & optimize 30+ Java \/ Spring Boot REST APIs with 20% latency reduction</p>
+                </div>
+              </div>
+
+              <!-- Card 2 -->
+              <div class="bg-glass border border-white/5 p-4 rounded-lg flex flex-col justify-between min-h-[140px] hover:border-electric-indigo hover:-translate-y-1 transition-all duration-300 group">
+                <div class="space-y-2 select-text">
+                  <div class="flex items-center gap-2 text-electric-indigo">
+                    <svg class="w-4 h-4 shrink-0 transition-transform duration-300 group-hover:translate-x-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                    <span class="font-mono text-xs font-bold uppercase tracking-wider select-text">Full-Stack Feature Delivery</span>
+                  </div>
+                  <p class="text-xs text-muted-fog select-text">Deliver features across React, Angular 21 & AngularJS with 8+ service integrations</p>
+                </div>
+              </div>
+
+              <!-- Card 3 -->
+              <div class="bg-glass border border-white/5 p-4 rounded-lg flex flex-col justify-between min-h-[140px] hover:border-electric-indigo hover:-translate-y-1 transition-all duration-300 group">
+                <div class="space-y-2 select-text">
+                  <div class="flex items-center gap-2 text-electric-indigo">
+                    <svg class="w-4 h-4 shrink-0 transition-transform duration-300 group-hover:scale-110" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path></svg>
+                    <span class="font-mono text-xs font-bold uppercase tracking-wider select-text">DevOps & Observability</span>
+                  </div>
+                  <p class="text-xs text-muted-fog select-text">Own LogRocket integration (30% MTTR drop), Akamai CDN migration, and CI/CD releases</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <img src="/assets/avatar-rahul.png" alt="Rahul Avatar" class="w-10 h-10 md:w-12 md:h-12 rounded-full border border-electric-indigo/20 object-cover shrink-0 select-none" />
+        </div>
+      </section>
+
+      <!-- FRAME 3: What's your stack? -->
+      <section class="chat-section opacity-0 space-y-6 snap-section" data-section="whats-your-stack" aria-label="What's your tech stack?">
+        <div class="flex items-start gap-3 justify-start" role="log" aria-live="polite">
+          <img src="/assets/avatar-user.png" alt="Guest Avatar" class="w-10 h-10 md:w-12 md:h-12 rounded-full border border-white/10 object-cover shrink-0 select-none" />
+          <div class="bg-deep-slate px-4 py-3 rounded-lg rounded-tl-none max-w-[85%] text-sm text-muted-fog font-mono min-h-[44px] flex items-center">
+            <span class="typing-text" data-text="What's your tech stack?"></span>
+          </div>
+        </div>
+
+        <div class="flex items-start gap-3 justify-end invisible" role="log" aria-live="polite">
+          <div class="w-full max-w-[85%] space-y-6">
+            <div class="bg-electric-indigo/5 border border-electric-indigo/20 px-5 py-4 rounded-lg rounded-tr-none text-[15px] md:text-[16px] text-pale-wire leading-[1.75] font-sans select-text">
+              Everything from the database to the CI pipeline. Here's a breakdown:
+            </div>
+
+            <!-- Responsive Grid of grouped tag clusters -->
+            <div class="w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 pt-4">
+              
+              <!-- Group 1: Languages -->
+              <div class="space-y-3">
+                <div class="font-mono text-[10px] uppercase tracking-[0.15em] text-electric-indigo select-none">Languages</div>
+                <div class="w-full h-[1px] bg-white/10 select-none"></div>
+                <div class="flex flex-wrap gap-2 pt-1" id="stack-group-1">
+                  <span class="opacity-0 translate-y-[6px] transition-all px-3 py-1 bg-electric-indigo/10 border border-electric-indigo/35 text-[11px] font-mono rounded-full text-pale-wire hover:bg-electric-indigo hover:text-void-black cursor-default">Java</span>
+                  <span class="opacity-0 translate-y-[6px] transition-all px-3 py-1 bg-electric-indigo/10 border border-electric-indigo/35 text-[11px] font-mono rounded-full text-pale-wire hover:bg-electric-indigo hover:text-void-black cursor-default">TypeScript</span>
+                  <span class="opacity-0 translate-y-[6px] transition-all px-3 py-1 bg-electric-indigo/10 border border-electric-indigo/35 text-[11px] font-mono rounded-full text-pale-wire hover:bg-electric-indigo hover:text-void-black cursor-default">JavaScript</span>
+                  <span class="opacity-0 translate-y-[6px] transition-all px-3 py-1 bg-electric-indigo/10 border border-electric-indigo/35 text-[11px] font-mono rounded-full text-pale-wire hover:bg-electric-indigo hover:text-void-black cursor-default">SQL</span>
+                </div>
+              </div>
+
+              <!-- Group 2: Backend -->
+              <div class="space-y-3">
+                <div class="font-mono text-[10px] uppercase tracking-[0.15em] text-electric-indigo select-none">Backend</div>
+                <div class="w-full h-[1px] bg-white/10 select-none"></div>
+                <div class="flex flex-wrap gap-2 pt-1" id="stack-group-2">
+                  <span class="opacity-0 translate-y-[6px] transition-all px-3 py-1 bg-electric-indigo/10 border border-electric-indigo/35 text-[11px] font-mono rounded-full text-pale-wire hover:bg-electric-indigo hover:text-void-black cursor-default">Spring Boot 3</span>
+                  <span class="opacity-0 translate-y-[6px] transition-all px-3 py-1 bg-electric-indigo/10 border border-electric-indigo/35 text-[11px] font-mono rounded-full text-pale-wire hover:bg-electric-indigo hover:text-void-black cursor-default">Spring MVC</span>
+                  <span class="opacity-0 translate-y-[6px] transition-all px-3 py-1 bg-electric-indigo/10 border border-electric-indigo/35 text-[11px] font-mono rounded-full text-pale-wire hover:bg-electric-indigo hover:text-void-black cursor-default">Spring Security</span>
+                  <span class="opacity-0 translate-y-[6px] transition-all px-3 py-1 bg-electric-indigo/10 border border-electric-indigo/35 text-[11px] font-mono rounded-full text-pale-wire hover:bg-electric-indigo hover:text-void-black cursor-default">Hibernate/JPA</span>
+                  <span class="opacity-0 translate-y-[6px] transition-all px-3 py-1 bg-electric-indigo/10 border border-electric-indigo/35 text-[11px] font-mono rounded-full text-pale-wire hover:bg-electric-indigo hover:text-void-black cursor-default">GraphQL</span>
+                  <span class="opacity-0 translate-y-[6px] transition-all px-3 py-1 bg-electric-indigo/10 border border-electric-indigo/35 text-[11px] font-mono rounded-full text-pale-wire hover:bg-electric-indigo hover:text-void-black cursor-default">OpenAPI</span>
+                  <span class="opacity-0 translate-y-[6px] transition-all px-3 py-1 bg-electric-indigo/10 border border-electric-indigo/35 text-[11px] font-mono rounded-full text-pale-wire hover:bg-electric-indigo hover:text-void-black cursor-default">Maven</span>
+                  <span class="opacity-0 translate-y-[6px] transition-all px-3 py-1 bg-electric-indigo/10 border border-electric-indigo/35 text-[11px] font-mono rounded-full text-pale-wire hover:bg-electric-indigo hover:text-void-black cursor-default">Gradle</span>
+                </div>
+              </div>
+
+              <!-- Group 3: Frontend -->
+              <div class="space-y-3">
+                <div class="font-mono text-[10px] uppercase tracking-[0.15em] text-electric-indigo select-none">Frontend</div>
+                <div class="w-full h-[1px] bg-white/10 select-none"></div>
+                <div class="flex flex-wrap gap-2 pt-1" id="stack-group-3">
+                  <span class="opacity-0 translate-y-[6px] transition-all px-3 py-1 bg-electric-indigo/10 border border-electric-indigo/35 text-[11px] font-mono rounded-full text-pale-wire hover:bg-electric-indigo hover:text-void-black cursor-default">React.js</span>
+                  <span class="opacity-0 translate-y-[6px] transition-all px-3 py-1 bg-electric-indigo/10 border border-electric-indigo/35 text-[11px] font-mono rounded-full text-pale-wire hover:bg-electric-indigo hover:text-void-black cursor-default">Angular 21</span>
+                  <span class="opacity-0 translate-y-[6px] transition-all px-3 py-1 bg-electric-indigo/10 border border-electric-indigo/35 text-[11px] font-mono rounded-full text-pale-wire hover:bg-electric-indigo hover:text-void-black cursor-default">AngularJS</span>
+                  <span class="opacity-0 translate-y-[6px] transition-all px-3 py-1 bg-electric-indigo/10 border border-electric-indigo/35 text-[11px] font-mono rounded-full text-pale-wire hover:bg-electric-indigo hover:text-void-black cursor-default">HTML5/CSS3</span>
+                  <span class="opacity-0 translate-y-[6px] transition-all px-3 py-1 bg-electric-indigo/10 border border-electric-indigo/35 text-[11px] font-mono rounded-full text-pale-wire hover:bg-electric-indigo hover:text-void-black cursor-default">Bootstrap</span>
+                </div>
+              </div>
+
+              <!-- Group 4: Cloud & DevOps -->
+              <div class="space-y-3">
+                <div class="font-mono text-[10px] uppercase tracking-[0.15em] text-electric-indigo select-none">Cloud & DevOps</div>
+                <div class="w-full h-[1px] bg-white/10 select-none"></div>
+                <div class="flex flex-wrap gap-2 pt-1" id="stack-group-4">
+                  <span class="opacity-0 translate-y-[6px] transition-all px-3 py-1 bg-electric-indigo/10 border border-electric-indigo/35 text-[11px] font-mono rounded-full text-pale-wire hover:bg-electric-indigo hover:text-void-black cursor-default">AWS EC2/S3</span>
+                  <span class="opacity-0 translate-y-[6px] transition-all px-3 py-1 bg-electric-indigo/10 border border-electric-indigo/35 text-[11px] font-mono rounded-full text-pale-wire hover:bg-electric-indigo hover:text-void-black cursor-default">Lambda/ECS</span>
+                  <span class="opacity-0 translate-y-[6px] transition-all px-3 py-1 bg-electric-indigo/10 border border-electric-indigo/35 text-[11px] font-mono rounded-full text-pale-wire hover:bg-electric-indigo hover:text-void-black cursor-default">Docker</span>
+                  <span class="opacity-0 translate-y-[6px] transition-all px-3 py-1 bg-electric-indigo/10 border border-electric-indigo/35 text-[11px] font-mono rounded-full text-pale-wire hover:bg-electric-indigo hover:text-void-black cursor-default">Kubernetes</span>
+                  <span class="opacity-0 translate-y-[6px] transition-all px-3 py-1 bg-electric-indigo/10 border border-electric-indigo/35 text-[11px] font-mono rounded-full text-pale-wire hover:bg-electric-indigo hover:text-void-black cursor-default">Jenkins</span>
+                  <span class="opacity-0 translate-y-[6px] transition-all px-3 py-1 bg-electric-indigo/10 border border-electric-indigo/35 text-[11px] font-mono rounded-full text-pale-wire hover:bg-electric-indigo hover:text-void-black cursor-default">GitHub Actions</span>
+                  <span class="opacity-0 translate-y-[6px] transition-all px-3 py-1 bg-electric-indigo/10 border border-electric-indigo/35 text-[11px] font-mono rounded-full text-pale-wire hover:bg-electric-indigo hover:text-void-black cursor-default">Terraform</span>
+                </div>
+              </div>
+
+              <!-- Group 5: Data & Messaging -->
+              <div class="space-y-3">
+                <div class="font-mono text-[10px] uppercase tracking-[0.15em] text-electric-indigo select-none">Data & Messaging</div>
+                <div class="w-full h-[1px] bg-white/10 select-none"></div>
+                <div class="flex flex-wrap gap-2 pt-1" id="stack-group-5">
+                  <span class="opacity-0 translate-y-[6px] transition-all px-3 py-1 bg-electric-indigo/10 border border-electric-indigo/35 text-[11px] font-mono rounded-full text-pale-wire hover:bg-electric-indigo hover:text-void-black cursor-default">MySQL</span>
+                  <span class="opacity-0 translate-y-[6px] transition-all px-3 py-1 bg-electric-indigo/10 border border-electric-indigo/35 text-[11px] font-mono rounded-full text-pale-wire hover:bg-electric-indigo hover:text-void-black cursor-default">MongoDB</span>
+                  <span class="opacity-0 translate-y-[6px] transition-all px-3 py-1 bg-electric-indigo/10 border border-electric-indigo/35 text-[11px] font-mono rounded-full text-pale-wire hover:bg-electric-indigo hover:text-void-black cursor-default">Redis</span>
+                  <span class="opacity-0 translate-y-[6px] transition-all px-3 py-1 bg-electric-indigo/10 border border-electric-indigo/35 text-[11px] font-mono rounded-full text-pale-wire hover:bg-electric-indigo hover:text-void-black cursor-default">Apache Kafka</span>
+                </div>
+              </div>
+
+              <!-- Group 6: Observability -->
+              <div class="space-y-3">
+                <div class="font-mono text-[10px] uppercase tracking-[0.15em] text-electric-indigo select-none">Observability</div>
+                <div class="w-full h-[1px] bg-white/10 select-none"></div>
+                <div class="flex flex-wrap gap-2 pt-1" id="stack-group-6">
+                  <span class="opacity-0 translate-y-[6px] transition-all px-3 py-1 bg-electric-indigo/10 border border-electric-indigo/35 text-[11px] font-mono rounded-full text-pale-wire hover:bg-electric-indigo hover:text-void-black cursor-default">LogRocket</span>
+                  <span class="opacity-0 translate-y-[6px] transition-all px-3 py-1 bg-electric-indigo/10 border border-electric-indigo/35 text-[11px] font-mono rounded-full text-pale-wire hover:bg-electric-indigo hover:text-void-black cursor-default">CloudWatch</span>
+                  <span class="opacity-0 translate-y-[6px] transition-all px-3 py-1 bg-electric-indigo/10 border border-electric-indigo/35 text-[11px] font-mono rounded-full text-pale-wire hover:bg-electric-indigo hover:text-void-black cursor-default">DataDog</span>
+                  <span class="opacity-0 translate-y-[6px] transition-all px-3 py-1 bg-electric-indigo/10 border border-electric-indigo/35 text-[11px] font-mono rounded-full text-pale-wire hover:bg-electric-indigo hover:text-void-black cursor-default">OpenTelemetry</span>
+                </div>
+              </div>
+
+              <!-- Group 7: AI & Agentic -->
+              <div class="space-y-3">
+                <div class="font-mono text-[10px] uppercase tracking-[0.15em] text-electric-indigo select-none">AI & Agentic</div>
+                <div class="w-full h-[1px] bg-white/10 select-none"></div>
+                <div class="flex flex-wrap gap-2 pt-1" id="stack-group-7">
+                  <span class="opacity-0 translate-y-[6px] transition-all px-3 py-1 bg-electric-indigo/10 border border-electric-indigo/35 text-[11px] font-mono rounded-full text-pale-wire hover:bg-electric-indigo hover:text-void-black cursor-default">Claude API</span>
+                  <span class="opacity-0 translate-y-[6px] transition-all px-3 py-1 bg-electric-indigo/10 border border-electric-indigo/35 text-[11px] font-mono rounded-full text-pale-wire hover:bg-electric-indigo hover:text-void-black cursor-default">MCP</span>
+                  <span class="opacity-0 translate-y-[6px] transition-all px-3 py-1 bg-electric-indigo/10 border border-electric-indigo/35 text-[11px] font-mono rounded-full text-pale-wire hover:bg-electric-indigo hover:text-void-black cursor-default">Prompt Eng.</span>
+                  <span class="opacity-0 translate-y-[6px] transition-all px-3 py-1 bg-electric-indigo/10 border border-electric-indigo/35 text-[11px] font-mono rounded-full text-pale-wire hover:bg-electric-indigo hover:text-void-black cursor-default">Agent SDK</span>
+                </div>
+              </div>
+
+              <!-- Group 8: Testing -->
+              <div class="space-y-3">
+                <div class="font-mono text-[10px] uppercase tracking-[0.15em] text-electric-indigo select-none">Testing</div>
+                <div class="w-full h-[1px] bg-white/10 select-none"></div>
+                <div class="flex flex-wrap gap-2 pt-1" id="stack-group-8">
+                  <span class="opacity-0 translate-y-[6px] transition-all px-3 py-1 bg-electric-indigo/10 border border-electric-indigo/35 text-[11px] font-mono rounded-full text-pale-wire hover:bg-electric-indigo hover:text-void-black cursor-default">JUnit 5</span>
+                  <span class="opacity-0 translate-y-[6px] transition-all px-3 py-1 bg-electric-indigo/10 border border-electric-indigo/35 text-[11px] font-mono rounded-full text-pale-wire hover:bg-electric-indigo hover:text-void-black cursor-default">Jasmine</span>
+                  <span class="opacity-0 translate-y-[6px] transition-all px-3 py-1 bg-electric-indigo/10 border border-electric-indigo/35 text-[11px] font-mono rounded-full text-pale-wire hover:bg-electric-indigo hover:text-void-black cursor-default">Karma</span>
+                  <span class="opacity-0 translate-y-[6px] transition-all px-3 py-1 bg-electric-indigo/10 border border-electric-indigo/35 text-[11px] font-mono rounded-full text-pale-wire hover:bg-electric-indigo hover:text-void-black cursor-default">Postman</span>
+                  <span class="opacity-0 translate-y-[6px] transition-all px-3 py-1 bg-electric-indigo/10 border border-electric-indigo/35 text-[11px] font-mono rounded-full text-pale-wire hover:bg-electric-indigo hover:text-void-black cursor-default">TDD</span>
+                  <span class="opacity-0 translate-y-[6px] transition-all px-3 py-1 bg-electric-indigo/10 border border-electric-indigo/35 text-[11px] font-mono rounded-full text-pale-wire hover:bg-electric-indigo hover:text-void-black cursor-default">Load Testing</span>
+                </div>
+              </div>
+
+              <!-- Group 9: Architecture -->
+              <div class="space-y-3">
+                <div class="font-mono text-[10px] uppercase tracking-[0.15em] text-electric-indigo select-none">Architecture</div>
+                <div class="w-full h-[1px] bg-white/10 select-none"></div>
+                <div class="flex flex-wrap gap-2 pt-1" id="stack-group-9">
+                  <span class="opacity-0 translate-y-[6px] transition-all px-3 py-1 bg-electric-indigo/10 border border-electric-indigo/35 text-[11px] font-mono rounded-full text-pale-wire hover:bg-electric-indigo hover:text-void-black cursor-default">Microservices</span>
+                  <span class="opacity-0 translate-y-[6px] transition-all px-3 py-1 bg-electric-indigo/10 border border-electric-indigo/35 text-[11px] font-mono rounded-full text-pale-wire hover:bg-electric-indigo hover:text-void-black cursor-default">Event-Driven</span>
+                  <span class="opacity-0 translate-y-[6px] transition-all px-3 py-1 bg-electric-indigo/10 border border-electric-indigo/35 text-[11px] font-mono rounded-full text-pale-wire hover:bg-electric-indigo hover:text-void-black cursor-default">REST/gRPC</span>
+                  <span class="opacity-0 translate-y-[6px] transition-all px-3 py-1 bg-electric-indigo/10 border border-electric-indigo/35 text-[11px] font-mono rounded-full text-pale-wire hover:bg-electric-indigo hover:text-void-black cursor-default">API Gateway</span>
+                  <span class="opacity-0 translate-y-[6px] transition-all px-3 py-1 bg-electric-indigo/10 border border-electric-indigo/35 text-[11px] font-mono rounded-full text-pale-wire hover:bg-electric-indigo hover:text-void-black cursor-default">SOLID</span>
+                  <span class="opacity-0 translate-y-[6px] transition-all px-3 py-1 bg-electric-indigo/10 border border-electric-indigo/35 text-[11px] font-mono rounded-full text-pale-wire hover:bg-electric-indigo hover:text-void-black cursor-default">Design Patterns</span>
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+          <img src="/assets/avatar-rahul.png" alt="Rahul Avatar" class="w-10 h-10 md:w-12 md:h-12 rounded-full border border-electric-indigo/20 object-cover shrink-0 select-none" />
+        </div>
+      </section>
+
+      <!-- FRAME 4: Show me your Deloitte work -->
+      <section class="chat-section opacity-0 space-y-6 snap-section" data-section="deloitte-work" aria-label="Tell me about your work at Deloitte.">
+        <div class="flex items-start gap-3 justify-start" role="log" aria-live="polite">
+          <img src="/assets/avatar-user.png" alt="Guest Avatar" class="w-10 h-10 md:w-12 md:h-12 rounded-full border border-white/10 object-cover shrink-0 select-none" />
+          <div class="bg-deep-slate px-4 py-3 rounded-lg rounded-tl-none max-w-[85%] text-sm text-muted-fog font-mono min-h-[44px] flex items-center">
+            <span class="typing-text" data-text="Tell me about your work at Deloitte."></span>
+          </div>
+        </div>
+
+        <div class="flex items-start gap-3 justify-end invisible" role="log" aria-live="polite">
+          <div class="w-full max-w-[85%] space-y-8">
+            <div class="space-y-1 select-text">
+              <h3 class="font-mono text-sm text-pale-wire font-bold tracking-wider">Analyst → Java Full Stack Developer</h3>
+              <p class="text-xs text-muted-fog">Deloitte, Mumbai · Feb 2023 – Present</p>
+            </div>
+
+            <!-- Achievement Commit Log Cards -->
+            <div class="space-y-4" id="commit-cards-container">
+              
+              <!-- Commit 1 -->
+              <div class="bg-glass rounded-lg p-5 commit-card space-y-4 opacity-0 translate-y-4 transition-all duration-300">
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between border-b border-white/5 pb-2 text-[11px] font-mono text-muted-fog select-none">
+                  <span>┌─ commit <span class="text-electric-indigo select-all">a1b2c3</span> ──────────────────────────────────┐</span>
+                </div>
+                <div class="space-y-2 select-text">
+                  <div class="font-mono text-xs font-bold text-pale-wire">perf: API latency optimization (30+ APIs)</div>
+                  <p class="text-xs text-muted-fog leading-relaxed">Designed 30+ production REST APIs, achieving a 20% reduction in avg response latency via query plan analysis and N+1 elimination.</p>
+                </div>
+                <div class="space-y-1 font-mono text-[11px]">
+                  <div class="flex justify-between text-muted-fog select-none">
+                    <span>Impact: [████████░░]</span>
+                    <span class="text-ember font-bold">20% latency drop</span>
+                  </div>
+                  <!-- Progress Bar -->
+                  <div class="w-full h-1 bg-white/5 rounded-full overflow-hidden">
+                    <div class="h-full bg-electric-indigo progress-bar" data-width="80%"></div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Commit 2 -->
+              <div class="bg-glass rounded-lg p-5 commit-card space-y-4 opacity-0 translate-y-4 transition-all duration-300">
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between border-b border-white/5 pb-2 text-[11px] font-mono text-muted-fog select-none">
+                  <span>┌─ commit <span class="text-electric-indigo select-all">f7e8d9</span> ──────────────────────────────────┐</span>
+                </div>
+                <div class="space-y-2 select-text">
+                  <div class="font-mono text-xs font-bold text-pale-wire">feat: Full-stack delivery (8+ service integrations)</div>
+                  <p class="text-xs text-muted-fog leading-relaxed">Orchestrated end-to-end integration across 8 major microservices, building robust Java/Spring integration modules ensuring cross-platform interop.</p>
+                </div>
+                <div class="space-y-1 font-mono text-[11px]">
+                  <div class="flex justify-between text-muted-fog select-none">
+                    <span>Impact: [█████████░]</span>
+                    <span class="text-ember font-bold">Cross-platform interop</span>
+                  </div>
+                  <div class="w-full h-1 bg-white/5 rounded-full overflow-hidden">
+                    <div class="h-full bg-electric-indigo progress-bar" data-width="90%"></div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Commit 3 -->
+              <div class="bg-glass rounded-lg p-5 commit-card space-y-4 opacity-0 translate-y-4 transition-all duration-300">
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between border-b border-white/5 pb-2 text-[11px] font-mono text-muted-fog select-none">
+                  <span>┌─ commit <span class="text-electric-indigo select-all">c4b5a6</span> ──────────────────────────────────┐</span>
+                </div>
+                <div class="space-y-2 select-text">
+                  <div class="font-mono text-xs font-bold text-pale-wire">ops: LogRocket observability rollout</div>
+                  <p class="text-xs text-muted-fog leading-relaxed">Spearheaded the integration of LogRocket across microservices, establishing proactive alerting and reducing anomaly detection/resolution cycles.</p>
+                </div>
+                <div class="space-y-1 font-mono text-[11px]">
+                  <div class="flex justify-between text-muted-fog select-none">
+                    <span>Impact: [███████░░░]</span>
+                    <span class="text-ember font-bold">30% MTTR reduction</span>
+                  </div>
+                  <div class="w-full h-1 bg-white/5 rounded-full overflow-hidden">
+                    <div class="h-full bg-electric-indigo progress-bar" data-width="70%"></div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Commit 4 -->
+              <div class="bg-glass rounded-lg p-5 commit-card space-y-4 opacity-0 translate-y-4 transition-all duration-300">
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between border-b border-white/5 pb-2 text-[11px] font-mono text-muted-fog select-none">
+                  <span>┌─ commit <span class="text-electric-indigo select-all">e2d3c4</span> ──────────────────────────────────┐</span>
+                </div>
+                <div class="space-y-2 select-text">
+                  <div class="font-mono text-xs font-bold text-pale-wire">test: Test coverage expansion</div>
+                  <p class="text-xs text-muted-fog leading-relaxed">Reconstructed legacy unit and integration test beds using JUnit, Mockito, and integration testcontainers, improving test suite reliability.</p>
+                </div>
+                <div class="space-y-1 font-mono text-[11px]">
+                  <div class="flex justify-between text-muted-fog select-none">
+                    <span>Impact: [██████████]</span>
+                    <span class="text-ember font-bold">60% → 88% coverage</span>
+                  </div>
+                  <div class="w-full h-1 bg-white/5 rounded-full overflow-hidden">
+                    <div class="h-full bg-electric-indigo progress-bar" data-width="100%"></div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Commit 5 -->
+              <div class="bg-glass rounded-lg p-5 commit-card space-y-4 opacity-0 translate-y-4 transition-all duration-300">
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between border-b border-white/5 pb-2 text-[11px] font-mono text-muted-fog select-none">
+                  <span>┌─ commit <span class="text-electric-indigo select-all">d5e6f7</span> ──────────────────────────────────┐</span>
+                </div>
+                <div class="space-y-2 select-text">
+                  <div class="font-mono text-xs font-bold text-pale-wire">feat: Sophos → Akamai CDN/WAF migration</div>
+                  <p class="text-xs text-muted-fog leading-relaxed">Participated in migration of network protection and caching layer to Akamai, optimizing security parameters and cache configuration policies.</p>
+                </div>
+                <div class="space-y-1 font-mono text-[11px]">
+                  <div class="flex justify-between text-muted-fog select-none">
+                    <span>Impact: [████████░░]</span>
+                    <span class="text-ember font-bold">35% better cache-hit</span>
+                  </div>
+                  <div class="w-full h-1 bg-white/5 rounded-full overflow-hidden">
+                    <div class="h-full bg-electric-indigo progress-bar" data-width="80%"></div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Commit 6 -->
+              <div class="bg-glass rounded-lg p-5 commit-card space-y-4 opacity-0 translate-y-4 transition-all duration-300">
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between border-b border-white/5 pb-2 text-[11px] font-mono text-muted-fog select-none">
+                  <span>┌─ commit <span class="text-electric-indigo select-all">b9a8c7</span> ──────────────────────────────────┐</span>
+                </div>
+                <div class="space-y-2 select-text">
+                  <div class="font-mono text-xs font-bold text-pale-wire">fix: Production incident resolution (50+)</div>
+                  <p class="text-xs text-muted-fog leading-relaxed">Spearheaded triage and root cause investigation for 50+ critical incidents, implementing rapid hotfixes and long-term regression safety measures.</p>
+                </div>
+                <div class="space-y-1 font-mono text-[11px]">
+                  <div class="flex justify-between text-muted-fog select-none">
+                    <span>Impact: [█████████░]</span>
+                    <span class="text-ember font-bold">99.5%+ uptime SLA</span>
+                  </div>
+                  <div class="w-full h-1 bg-white/5 rounded-full overflow-hidden">
+                    <div class="h-full bg-electric-indigo progress-bar" data-width="95%"></div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Commit 7 -->
+              <div class="bg-glass rounded-lg p-5 commit-card space-y-4 opacity-0 translate-y-4 transition-all duration-300">
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between border-b border-white/5 pb-2 text-[11px] font-mono text-muted-fog select-none">
+                  <span>┌─ commit <span class="text-electric-indigo select-all">5e4d3c</span> ──────────────────────────────────┐</span>
+                </div>
+                <div class="space-y-2 select-text">
+                  <div class="font-mono text-xs font-bold text-pale-wire">ops: Release management (26+ cycles, 120+ engineers)</div>
+                  <p class="text-xs text-muted-fog leading-relaxed">Coordinated deployment cycles, release checks, and configuration branches across 10+ agile streams. Zero unplanned production rollbacks.</p>
+                </div>
+                <div class="space-y-1 font-mono text-[11px]">
+                  <div class="flex justify-between text-muted-fog select-none">
+                    <span>Impact: [██████████]</span>
+                    <span class="text-ember font-bold">0 unplanned rollbacks</span>
+                  </div>
+                  <div class="w-full h-1 bg-white/5 rounded-full overflow-hidden">
+                    <div class="h-full bg-electric-indigo progress-bar" data-width="100%"></div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+          <img src="/assets/avatar-rahul.png" alt="Rahul Avatar" class="w-10 h-10 md:w-12 md:h-12 rounded-full border border-electric-indigo/20 object-cover shrink-0 select-none" />
+        </div>
+      </section>
+
+      <!-- FRAME 5: Any side projects? -->
+      <section class="chat-section opacity-0 space-y-6 snap-section" data-section="side-projects" aria-label="Any cool projects outside work?">
+        <div class="flex items-start gap-3 justify-start" role="log" aria-live="polite">
+          <img src="/assets/avatar-user.png" alt="Guest Avatar" class="w-10 h-10 md:w-12 md:h-12 rounded-full border border-white/10 object-cover shrink-0 select-none" />
+          <div class="bg-deep-slate px-4 py-3 rounded-lg rounded-tl-none max-w-[85%] text-sm text-muted-fog font-mono min-h-[44px] flex items-center">
+            <span class="typing-text" data-text="Any cool projects outside work?"></span>
+          </div>
+        </div>
+
+        <div class="flex items-start gap-3 justify-end invisible" role="log" aria-live="polite">
+          <div class="w-full max-w-[85%] space-y-6">
+            <div class="bg-electric-indigo/5 border border-electric-indigo/20 px-5 py-4 rounded-lg rounded-tr-none text-[15px] md:text-[16px] text-pale-wire leading-[1.75] font-sans select-text">
+              A few things I've built from scratch — no Jira tickets, no sprint planning, just code.
+            </div>
+
+            <!-- Project Cards -->
+            <div class="space-y-6 project-card-container">
+              
+              <!-- Project 1 -->
+              <div class="bg-glass rounded-lg project-card p-6 flex flex-col gap-6" id="project-card-1">
+                <div class="w-full flex items-center justify-center bg-deep-slate/50 border border-white/5 rounded-sm p-4 select-none">
+                  <!-- ASCII Art microservice nodes representation -->
+                  <pre class="font-mono text-[10px] md:text-xs text-electric-indigo/70 leading-tight">
+ [Client] ──&gt; [API Gateway] 
+                 │
+  ┌──────────────┼──────────────┐
+  ▼              ▼              ▼
+[User] &lt;──&gt; [Catalog] &lt;──&gt; [Order]
+  │              │              │
+  ▼              ▼              ▼
+[Redis]       [MySQL]       [Kafka] ──&gt; [Payment]
+                  </pre>
+                </div>
+
+                <div class="space-y-4">
+                  <div class="space-y-1 select-text">
+                    <h4 class="font-mono text-sm font-bold text-pale-wire">Enterprise E-Commerce Microservices Platform</h4>
+                    <p class="text-xs text-muted-fog">6-service event-driven architecture (User, Catalog, Inventory, Order, Payment, Notif)</p>
+                  </div>
+
+                  <div class="flex flex-wrap gap-1.5 select-text">
+                    <span class="px-2 py-0.5 bg-white/5 border border-white/10 rounded-sm font-mono text-[10px] text-muted-fog">Java</span>
+                    <span class="px-2 py-0.5 bg-white/5 border border-white/10 rounded-sm font-mono text-[10px] text-muted-fog">Spring Boot</span>
+                    <span class="px-2 py-0.5 bg-white/5 border border-white/10 rounded-sm font-mono text-[10px] text-muted-fog">Kafka</span>
+                    <span class="px-2 py-0.5 bg-white/5 border border-white/10 rounded-sm font-mono text-[10px] text-muted-fog">Redis</span>
+                    <span class="px-2 py-0.5 bg-white/5 border border-white/10 rounded-sm font-mono text-[10px] text-muted-fog">Docker</span>
+                    <span class="px-2 py-0.5 bg-white/5 border border-white/10 rounded-sm font-mono text-[10px] text-muted-fog">ECS</span>
+                  </div>
+
+                  <ul class="space-y-1.5 font-sans text-xs text-muted-fog list-none pl-0 select-text">
+                    <li class="flex items-start gap-2">
+                      <span class="text-electric-indigo">⚡</span>
+                      <span>45% faster API response via write-through caching on Redis</span>
+                    </li>
+                    <li class="flex items-start gap-2">
+                      <span class="text-electric-indigo">⚡</span>
+                      <span>Sub-200ms p99 latency on order placement under simulated heavy loads</span>
+                    </li>
+                    <li class="flex items-start gap-2">
+                      <span class="text-electric-indigo">⚡</span>
+                      <span>Automated Blue-Green deploys on AWS ECS via custom shell hooks</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+
+              <!-- Project 2 -->
+              <div class="bg-glass rounded-lg project-card p-6 flex flex-col gap-6" id="project-card-2">
+                <div class="w-full flex items-center justify-center bg-deep-slate/50 border border-white/5 rounded-sm p-4 select-none">
+                  <!-- SVG Analytics and base compression visualization -->
+                  <svg class="w-full max-w-[280px] h-20 text-electric-indigo/70" viewBox="0 0 300 80" fill="none">
+                    <path d="M10 40H60M240 40H290" stroke="currentColor" stroke-width="1.5" stroke-dasharray="3 3"/>
+                    <rect x="60" y="25" width="40" height="30" rx="4" fill="currentColor" fill-opacity="0.1" stroke="currentColor" stroke-width="1.5"/>
+                    <text x="80" y="44" font-family="monospace" font-size="10" fill="currentColor" text-anchor="middle" font-weight="bold">Long</text>
+                    <path d="M100 40L140 40" stroke="currentColor" stroke-width="2" marker-end="url(#arrow)"/>
+                    <rect x="140" y="25" width="40" height="30" rx="4" fill="var(--color-ember)" fill-opacity="0.1" stroke="var(--color-ember)" stroke-width="1.5"/>
+                    <text x="160" y="44" font-family="monospace" font-size="10" fill="var(--color-ember)" text-anchor="middle" font-weight="bold">Base62</text>
+                    <path d="M180 40L200 40M200 40L220 25M200 40L220 55" stroke="currentColor" stroke-width="1.5"/>
+                    <rect x="220" y="10" width="20" height="18" rx="2" fill="currentColor" fill-opacity="0.05" stroke="currentColor" stroke-width="1"/>
+                    <text x="230" y="22" font-family="monospace" font-size="8" fill="currentColor" text-anchor="middle">Geo</text>
+                    <rect x="220" y="48" width="20" height="18" rx="2" fill="currentColor" fill-opacity="0.05" stroke="currentColor" stroke-width="1"/>
+                    <text x="230" y="60" font-family="monospace" font-size="8" fill="currentColor" text-anchor="middle">Clicks</text>
+                    
+                    <defs>
+                      <marker id="arrow" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                        <path d="M 0 0 L 10 5 L 0 10 z" fill="currentColor"/>
+                      </marker>
+                    </defs>
+                  </svg>
+                </div>
+
+                <div class="space-y-4">
+                  <div class="space-y-1 select-text">
+                    <h4 class="font-mono text-sm font-bold text-pale-wire">Distributed URL Shortener</h4>
+                    <p class="text-xs text-muted-fog">High-throughput redirection engine handling 10,000+ redirects/sec</p>
+                  </div>
+
+                  <div class="flex flex-wrap gap-1.5 select-text">
+                    <span class="px-2 py-0.5 bg-white/5 border border-white/10 rounded-sm font-mono text-[10px] text-muted-fog">Java</span>
+                    <span class="px-2 py-0.5 bg-white/5 border border-white/10 rounded-sm font-mono text-[10px] text-muted-fog">Spring Boot</span>
+                    <span class="px-2 py-0.5 bg-white/5 border border-white/10 rounded-sm font-mono text-[10px] text-muted-fog">Redis</span>
+                    <span class="px-2 py-0.5 bg-white/5 border border-white/10 rounded-sm font-mono text-[10px] text-muted-fog">MySQL</span>
+                    <span class="px-2 py-0.5 bg-white/5 border border-white/10 rounded-sm font-mono text-[10px] text-muted-fog">EC2</span>
+                  </div>
+
+                  <ul class="space-y-1.5 font-sans text-xs text-muted-fog list-none pl-0 select-text">
+                    <li class="flex items-start gap-2">
+                      <span class="text-electric-indigo">⚡</span>
+                      <span>Sub-5ms redirect latency at p95 using local caching hierarchies</span>
+                    </li>
+                    <li class="flex items-start gap-2">
+                      <span class="text-electric-indigo">⚡</span>
+                      <span>Token-bucket algorithm rate limiter integrated via Spring interceptor</span>
+                    </li>
+                    <li class="flex items-start gap-2">
+                      <span class="text-electric-indigo">⚡</span>
+                      <span>Geo-IP location tracking and HTTP referrer analytics metrics pipeline</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+
+            </div>
+          </div>
+          <img src="/assets/avatar-rahul.png" alt="Rahul Avatar" class="w-10 h-10 md:w-12 md:h-12 rounded-full border border-electric-indigo/20 object-cover shrink-0 select-none" />
+        </div>
+      </section>
+
+      <!-- FRAME 6: Certifications? -->
+      <section class="chat-section opacity-0 space-y-6 snap-section" data-section="certifications" aria-label="Any certifications worth mentioning?">
+        <div class="flex items-start gap-3 justify-start" role="log" aria-live="polite">
+          <img src="/assets/avatar-user.png" alt="Guest Avatar" class="w-10 h-10 md:w-12 md:h-12 rounded-full border border-white/10 object-cover shrink-0 select-none" />
+          <div class="bg-deep-slate px-4 py-3 rounded-lg rounded-tl-none max-w-[85%] text-sm text-muted-fog font-mono min-h-[44px] flex items-center">
+            <span class="typing-text" data-text="Any certifications worth mentioning?"></span>
+          </div>
+        </div>
+
+        <div class="flex items-start gap-3 justify-end invisible" role="log" aria-live="polite">
+          <div class="w-full max-w-[85%] space-y-6">
+            <div class="bg-electric-indigo/5 border border-electric-indigo/20 px-5 py-4 rounded-lg rounded-tr-none text-[15px] md:text-[16px] text-pale-wire leading-[1.75] font-sans select-text">
+              Four, and they cover cloud architecture to AI.
+            </div>
+
+            <!-- Certification Badges Grid (2x2) -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+              
+              <!-- Badge 1 -->
+              <div class="bg-glass rounded-2xl border border-white/5 p-6 flex flex-col items-center justify-center text-center gap-4 badge-shimmer-effect hover:border-electric-indigo transition-all duration-300 hover:scale-105 duration-500 shadow-lg opacity-0 scale-90" id="badge-1">
+                <!-- Double Ring Container for SVG -->
+                <div class="w-16 h-16 rounded-full border border-white/10 flex items-center justify-center relative bg-void-black shrink-0 select-none">
+                  <!-- Inner dashed ring -->
+                  <div class="absolute inset-1 rounded-full border border-dashed border-electric-indigo/30 animate-spin-slow"></div>
+                  <!-- Glowing SVG -->
+                  <svg class="w-8 h-8 text-electric-indigo filter drop-shadow-[0_0_8px_rgba(108,99,255,0.4)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+                  </svg>
+                </div>
+                <div class="space-y-1">
+                  <div class="font-mono text-[9px] text-muted-fog uppercase tracking-[0.15em] select-none">Anthropic</div>
+                  <h4 class="font-sans text-xs md:text-sm font-bold text-pale-wire tracking-wide select-text">Claude Certified Architect</h4>
+                  <div class="inline-block mt-1.5 px-2.5 py-0.5 bg-electric-indigo/10 border border-electric-indigo/25 rounded-sm font-mono text-[9px] text-electric-indigo select-none">Foundations</div>
+                </div>
+              </div>
+
+              <!-- Badge 2 -->
+              <div class="bg-glass rounded-2xl border border-white/5 p-6 flex flex-col items-center justify-center text-center gap-4 badge-shimmer-effect hover:border-electric-indigo transition-all duration-300 hover:scale-105 duration-500 shadow-lg opacity-0 scale-90" id="badge-2">
+                <div class="w-16 h-16 rounded-full border border-white/10 flex items-center justify-center relative bg-void-black shrink-0 select-none">
+                  <div class="absolute inset-1 rounded-full border border-dashed border-ember/30 animate-spin-slow-reverse"></div>
+                  <svg class="w-8 h-8 text-ember filter drop-shadow-[0_0_8px_rgba(255,122,76,0.4)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path>
+                  </svg>
+                </div>
+                <div class="space-y-1">
+                  <div class="font-mono text-[9px] text-muted-fog uppercase tracking-[0.15em] select-none">Amazon Web Services</div>
+                  <h4 class="font-sans text-xs md:text-sm font-bold text-pale-wire tracking-wide select-text">AWS Solutions Architect</h4>
+                  <div class="inline-block mt-1.5 px-2.5 py-0.5 bg-ember/10 border border-ember/25 rounded-sm font-mono text-[9px] text-ember select-none">Associate</div>
+                </div>
+              </div>
+
+              <!-- Badge 3 -->
+              <div class="bg-glass rounded-2xl border border-white/5 p-6 flex flex-col items-center justify-center text-center gap-4 badge-shimmer-effect hover:border-electric-indigo transition-all duration-300 hover:scale-105 duration-500 shadow-lg opacity-0 scale-90" id="badge-3">
+                <div class="w-16 h-16 rounded-full border border-white/10 flex items-center justify-center relative bg-void-black shrink-0 select-none">
+                  <div class="absolute inset-1 rounded-full border border-dashed border-ember/30 animate-spin-slow"></div>
+                  <svg class="w-8 h-8 text-ember filter drop-shadow-[0_0_8px_rgba(255,122,76,0.4)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"></path>
+                  </svg>
+                </div>
+                <div class="space-y-1">
+                  <div class="font-mono text-[9px] text-muted-fog uppercase tracking-[0.15em] select-none">Amazon Web Services</div>
+                  <h4 class="font-sans text-xs md:text-sm font-bold text-pale-wire tracking-wide select-text">AWS AI Practitioner</h4>
+                  <div class="inline-block mt-1.5 px-2.5 py-0.5 bg-ember/10 border border-ember/25 rounded-sm font-mono text-[9px] text-ember select-none">Specialty / AI</div>
+                </div>
+              </div>
+
+              <!-- Badge 4 -->
+              <div class="bg-glass rounded-2xl border border-white/5 p-6 flex flex-col items-center justify-center text-center gap-4 badge-shimmer-effect hover:border-electric-indigo transition-all duration-300 hover:scale-105 duration-500 shadow-lg opacity-0 scale-90" id="badge-4">
+                <div class="w-16 h-16 rounded-full border border-white/10 flex items-center justify-center relative bg-void-black shrink-0 select-none">
+                  <div class="absolute inset-1 rounded-full border border-dashed border-ember/30 animate-spin-slow-reverse"></div>
+                  <svg class="w-8 h-8 text-ember filter drop-shadow-[0_0_8px_rgba(255,122,76,0.4)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z"></path>
+                  </svg>
+                </div>
+                <div class="space-y-1">
+                  <div class="font-mono text-[9px] text-muted-fog uppercase tracking-[0.15em] select-none">Amazon Web Services</div>
+                  <h4 class="font-sans text-xs md:text-sm font-bold text-pale-wire tracking-wide select-text">AWS Cloud Practitioner</h4>
+                  <div class="inline-block mt-1.5 px-2.5 py-0.5 bg-ember/10 border border-ember/25 rounded-sm font-mono text-[9px] text-ember select-none">Foundations</div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+          <img src="/assets/avatar-rahul.png" alt="Rahul Avatar" class="w-10 h-10 md:w-12 md:h-12 rounded-full border border-electric-indigo/20 object-cover shrink-0 select-none" />
+        </div>
+      </section>
+
+      <!-- FRAME 7: How good are you? Real numbers. -->
+      <section class="chat-section opacity-0 space-y-6 snap-section" data-section="real-numbers" aria-label="Give me the numbers. No fluff.">
+        <div class="flex items-start gap-3 justify-start" role="log" aria-live="polite">
+          <img src="/assets/avatar-user.png" alt="Guest Avatar" class="w-10 h-10 md:w-12 md:h-12 rounded-full border border-white/10 object-cover shrink-0 select-none" />
+          <div class="bg-deep-slate px-4 py-3 rounded-lg rounded-tl-none max-w-[85%] text-sm text-muted-fog font-mono min-h-[44px] flex items-center">
+            <span class="typing-text" data-text="Give me the numbers. No fluff."></span>
+          </div>
+        </div>
+
+        <div class="flex items-start gap-3 justify-end invisible" role="log" aria-live="polite">
+          <div class="w-full max-w-[85%] space-y-6">
+            <div class="bg-electric-indigo/5 border border-electric-indigo/20 px-5 py-4 rounded-lg rounded-tr-none text-[15px] md:text-[16px] text-pale-wire leading-[1.75] font-sans select-text">
+              Sure. Here's what the work actually looks like:
+            </div>
+
+            <!-- Stats Dashboard Panel -->
+            <div class="bg-glass rounded-lg border border-white/5 overflow-hidden">
+              <div class="grid grid-cols-2 md:grid-cols-3 divide-y md:divide-y-0 divide-x divide-white/5 select-text">
+                
+                <!-- Tile 1 -->
+                <div class="p-6 flex flex-col justify-center items-center text-center gap-1.5">
+                  <div class="font-mono text-3xl md:text-4xl lg:text-5xl font-bold text-ember select-text">
+                    <span class="count-number" data-target="20">0</span>%
+                  </div>
+                  <div class="font-sans text-[11px] md:text-xs text-muted-fog leading-tight">Latency Reduced</div>
+                </div>
+
+                <!-- Tile 2 -->
+                <div class="p-6 flex flex-col justify-center items-center text-center gap-1.5">
+                  <div class="font-mono text-3xl md:text-4xl lg:text-5xl font-bold text-ember select-text">
+                    <span class="count-number" data-target="30">0</span>%
+                  </div>
+                  <div class="font-sans text-[11px] md:text-xs text-muted-fog leading-tight">MTTR Reduction</div>
+                </div>
+
+                <!-- Tile 3 -->
+                <div class="p-6 flex flex-col justify-center items-center text-center gap-1.5">
+                  <div class="font-mono text-3xl md:text-4xl lg:text-5xl font-bold text-ember select-text">
+                    <span class="count-number" data-target="35">0</span>%
+                  </div>
+                  <div class="font-sans text-[11px] md:text-xs text-muted-fog leading-tight">Cache Hit Ratio ↑</div>
+                </div>
+
+                <!-- Tile 4 (For grid divider layout on smaller screens) -->
+                <div class="p-6 flex flex-col justify-center items-center text-center gap-1.5 border-t border-white/5">
+                  <div class="font-mono text-3xl md:text-4xl lg:text-5xl font-bold text-ember select-text">
+                    <span class="count-number" data-target="88">0</span>%
+                  </div>
+                  <div class="font-sans text-[11px] md:text-xs text-muted-fog leading-tight">Test Coverage</div>
+                </div>
+
+                <!-- Tile 5 -->
+                <div class="p-6 flex flex-col justify-center items-center text-center gap-1.5 border-t border-white/5">
+                  <div class="font-mono text-3xl md:text-4xl lg:text-5xl font-bold text-ember select-text">
+                    <span class="count-number" data-target="50">0</span>+
+                  </div>
+                  <div class="font-sans text-[11px] md:text-xs text-muted-fog leading-tight">Incidents Resolved</div>
+                </div>
+
+                <!-- Tile 6 -->
+                <div class="p-6 flex flex-col justify-center items-center text-center gap-1.5 border-t border-white/5">
+                  <div class="font-mono text-3xl md:text-4xl lg:text-5xl font-bold text-ember select-text">
+                    <span class="count-number" data-target="26">0</span>+
+                  </div>
+                  <div class="font-sans text-[11px] md:text-xs text-muted-fog leading-tight">Zero-Rollback Releases</div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+          <img src="/assets/avatar-rahul.png" alt="Rahul Avatar" class="w-10 h-10 md:w-12 md:h-12 rounded-full border border-electric-indigo/20 object-cover shrink-0 select-none" />
+        </div>
+      </section>
+
+      <!-- Fun Question 1: Tabs vs Spaces -->
+      <section class="chat-section opacity-0 space-y-6 snap-section" data-section="fun-spaces" aria-label="Tabs or spaces? Choose wisely.">
+        <div class="flex items-start gap-3 justify-start" role="log" aria-live="polite">
+          <img src="/assets/avatar-user.png" alt="Guest Avatar" class="w-10 h-10 md:w-12 md:h-12 rounded-full border border-white/10 object-cover shrink-0 select-none" />
+          <div class="bg-deep-slate px-4 py-3 rounded-lg rounded-tl-none max-w-[85%] text-sm text-muted-fog font-mono min-h-[44px] flex items-center">
+            <span class="typing-text" data-text="Tabs or spaces? Choose wisely."></span>
+          </div>
+        </div>
+
+        <div class="flex items-start gap-3 justify-end invisible" role="log" aria-live="polite">
+          <div class="bg-electric-indigo/5 border border-electric-indigo/20 px-5 py-4 rounded-lg rounded-tr-none max-w-[85%] text-[15px] md:text-[16px] text-pale-wire leading-[1.75] font-sans space-y-4 shadow-sm select-text">
+            <div class="line-reveal">Spaces, always. Specifically, <span class="text-ember font-mono font-bold">4 spaces</span>.</div>
+            <div class="line-reveal">Java conventions run deep. The IDE auto-formats it anyway, but clean code styling is a hill I'm willing to deploy on.</div>
+            <div class="line-reveal">Besides, <span class="text-ember font-mono font-bold">1 cup of black coffee</span> is mathematically proven to compile exactly <span class="text-ember font-mono font-bold">200 lines</span> of bug-free logic.</div>
+          </div>
+          <img src="/assets/avatar-rahul.png" alt="Rahul Avatar" class="w-10 h-10 md:w-12 md:h-12 rounded-full border border-electric-indigo/20 object-cover shrink-0 select-none" />
+        </div>
+      </section>
+
+      <!-- Fun Question 2: Hobbies (Mumbai Escape) -->
+      <section class="chat-section opacity-0 space-y-6 snap-section" data-section="fun-backend" aria-label="What do you do when you are not writing code?">
+        <div class="flex items-start gap-3 justify-start" role="log" aria-live="polite">
+          <img src="/assets/avatar-user.png" alt="Guest Avatar" class="w-10 h-10 md:w-12 md:h-12 rounded-full border border-white/10 object-cover shrink-0 select-none" />
+          <div class="bg-deep-slate px-4 py-3 rounded-lg rounded-tl-none max-w-[85%] text-sm text-muted-fog font-mono min-h-[44px] flex items-center">
+            <span class="typing-text" data-text="What do you do when you are not writing code?"></span>
+          </div>
+        </div>
+
+        <div class="flex items-start gap-3 justify-end invisible" role="log" aria-live="polite">
+          <div class="bg-electric-indigo/5 border border-electric-indigo/20 px-5 py-4 rounded-lg rounded-tr-none max-w-[85%] text-[15px] md:text-[16px] text-pale-wire leading-[1.75] font-sans space-y-4 shadow-sm select-text">
+            <div class="line-reveal">You'll find me trekking in the <span class="text-ember font-mono font-bold">Western Ghats</span> or hunting for the best street food in Mumbai.</div>
+            <div class="line-reveal">Escaping to the green trails on weekends is my ultimate offline reboot, while seeking out the perfect Vada Pav and filter coffee keeps my energy compiled.</div>
+            <div class="line-reveal">Keeping a healthy balance between nature walks and core software architecture keeps my systems running without memory leaks.</div>
+          </div>
+          <img src="/assets/avatar-rahul.png" alt="Rahul Avatar" class="w-10 h-10 md:w-12 md:h-12 rounded-full border border-electric-indigo/20 object-cover shrink-0 select-none" />
+        </div>
+      </section>
+
+      <!-- Fun Question 3: Dark Mode vs Light Mode -->
+      <section class="chat-section opacity-0 space-y-6 snap-section" data-section="fun-darkmode" aria-label="Dark mode or light mode? Choose your side.">
+        <div class="flex items-start gap-3 justify-start" role="log" aria-live="polite">
+          <img src="/assets/avatar-user.png" alt="Guest Avatar" class="w-10 h-10 md:w-12 md:h-12 rounded-full border border-white/10 object-cover shrink-0 select-none" />
+          <div class="bg-deep-slate px-4 py-3 rounded-lg rounded-tl-none max-w-[85%] text-sm text-muted-fog font-mono min-h-[44px] flex items-center">
+            <span class="typing-text" data-text="Dark mode or light mode? Choose your side."></span>
+          </div>
+        </div>
+
+        <div class="flex items-start gap-3 justify-end invisible" role="log" aria-live="polite">
+          <div class="bg-electric-indigo/5 border border-electric-indigo/20 px-5 py-4 rounded-lg rounded-tr-none max-w-[85%] text-[15px] md:text-[16px] text-pale-wire leading-[1.75] font-sans space-y-4 shadow-sm select-text">
+            <div class="line-reveal"><span class="text-ember font-mono font-bold">Dark mode</span>, without a second thought.</div>
+            <div class="line-reveal">Light attracts bugs. That is a fundamental law of both nature and software development.</div>
+            <div class="line-reveal">Plus, my screen's soft glow at <span class="text-ember font-mono font-bold">2 AM</span> is the perfect coding environment for compiling microservices.</div>
+          </div>
+          <img src="/assets/avatar-rahul.png" alt="Rahul Avatar" class="w-10 h-10 md:w-12 md:h-12 rounded-full border border-electric-indigo/20 object-cover shrink-0 select-none" />
+        </div>
+      </section>
+
+      <!-- FRAME 8: What are you looking for? -->
+      <section class="chat-section opacity-0 space-y-6 snap-section" data-section="what-are-you-looking-for" aria-label="What kind of role are you looking for?">
+        <div class="flex items-start gap-3 justify-start" role="log" aria-live="polite">
+          <img src="/assets/avatar-user.png" alt="Guest Avatar" class="w-10 h-10 md:w-12 md:h-12 rounded-full border border-white/10 object-cover shrink-0 select-none" />
+          <div class="bg-deep-slate px-4 py-3 rounded-lg rounded-tl-none max-w-[85%] text-sm text-muted-fog font-mono min-h-[44px] flex items-center">
+            <span class="typing-text" data-text="What kind of role are you looking for?"></span>
+          </div>
+        </div>
+
+        <div class="flex items-start gap-3 justify-end invisible" role="log" aria-live="polite">
+          <div class="bg-electric-indigo/5 border border-electric-indigo/20 px-5 py-4 rounded-lg rounded-tr-none max-w-[85%] text-[15px] md:text-[16px] text-pale-wire leading-[1.75] font-sans space-y-4 shadow-sm select-text">
+            <div class="line-reveal">Something that pushes the systems I build.</div>
+            <div class="line-reveal">I'm interested in high-scale backend roles where distributed architecture decisions actually matter — SDE II or equivalent, ideally at product-first companies where engineering velocity is a competitive advantage, not an afterthought.</div>
+            <div class="line-reveal">Open to: <span class="text-ember font-mono font-bold">Mumbai · Remote (India) · Relocate</span></div>
+            <div class="line-reveal text-muted-fog text-xs leading-relaxed select-none">
+              Not looking for: <span class="strike-anim" id="not-looking-for-strike">Pure maintenance roles, waterfall environments, or teams where "it works on my machine" is an acceptable deployment strategy.</span>
+            </div>
+          </div>
+          <img src="/assets/avatar-rahul.png" alt="Rahul Avatar" class="w-10 h-10 md:w-12 md:h-12 rounded-full border border-electric-indigo/20 object-cover shrink-0 select-none" />
+        </div>
+      </section>
+
+      <!-- FRAME 9: How do I reach you? -->
+      <section id="contact-section" class="chat-section opacity-0 space-y-6 snap-section" data-section="how-do-i-reach-you" aria-label="How do I get in touch?">
+        <div class="flex items-start gap-3 justify-start" role="log" aria-live="polite">
+          <img src="/assets/avatar-user.png" alt="Guest Avatar" class="w-10 h-10 md:w-12 md:h-12 rounded-full border border-white/10 object-cover shrink-0 select-none" />
+          <div class="bg-deep-slate px-4 py-3 rounded-lg rounded-tl-none max-w-[85%] text-sm text-muted-fog font-mono min-h-[44px] flex items-center">
+            <span class="typing-text" data-text="How do I get in touch?"></span>
+          </div>
+        </div>
+
+        <div class="flex items-start gap-3 justify-end invisible" role="log" aria-live="polite">
+          <div class="w-full max-w-[85%] space-y-6">
+            <div class="bg-electric-indigo/5 border border-electric-indigo/20 px-5 py-4 rounded-lg rounded-tr-none text-[15px] md:text-[16px] text-pale-wire leading-[1.75] font-sans select-text">
+              I'm always happy to chat. Pick your channel:
+            </div>
+
+            <!-- Contact Buttons (Pill shapes with scale transitions, matching Action Buttons) -->
+            <div class="w-full flex flex-col gap-3 py-2">
+              <!-- Top Row: LinkedIn, GitHub, Website -->
+              <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 w-full">
+                <a href="https://www.linkedin.com/in/rahulkushwaha1922/" target="_blank" rel="noopener" class="flex items-center justify-center gap-2 px-5 py-3 border border-electric-indigo text-xs md:text-sm font-mono font-bold text-electric-indigo rounded-full bg-transparent hover:bg-electric-indigo hover:text-void-black active:scale-[0.95] transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-electric-indigo text-center">
+                  <span>💼 LinkedIn</span>
+                </a>
+  <!-- Fixed Top Header (Messenger Style) -->
+  <header id="chat-header" class="fixed top-0 left-0 right-0 z-30 bg-void-black/85 backdrop-blur-md border-b border-white/5 opacity-0 pointer-events-none transition-all duration-300 transform -translate-y-2 select-none">
+    <div class="max-w-[720px] mx-auto px-4 py-3 flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <div class="relative shrink-0">
+          <img src="/assets/avatar-rahul.png" alt="Rahul Avatar" class="w-8 h-8 rounded-full border border-electric-indigo/20 object-cover" />
+          <span class="absolute bottom-0 right-0 w-2 h-2 rounded-full bg-emerald-500 border-2 border-void-black"></span>
+        </div>
+        <div>
+          <div class="font-sans text-xs md:text-sm font-semibold text-pale-wire leading-tight">Rahul Kushwaha</div>
+          <div class="font-mono text-[9px] text-muted-fog">active_now</div>
+        </div>
+      </div>
+      
+      <button id="scroll-to-top-btn" class="font-mono text-[10px] uppercase tracking-wider text-muted-fog hover:text-electric-indigo px-2.5 py-1 bg-white/5 border border-white/10 rounded-sm hover:border-electric-indigo/50 transition-all cursor-pointer">
+        ↑ top
+      </button>
+    </div>
+  </header>
+                <a href="https://github.com/the-rahulk" target="_blank" rel="noopener" class="flex items-center justify-center gap-2 px-5 py-3 border border-electric-indigo text-xs md:text-sm font-mono font-bold text-electric-indigo rounded-full bg-transparent hover:bg-electric-indigo hover:text-void-black active:scale-[0.95] transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-electric-indigo text-center">
+                  <span>🐙 GitHub</span>
+                </a>
+  <!-- Fixed Top Header (Messenger Style) -->
+  <header id="chat-header" class="fixed top-0 left-0 right-0 z-30 bg-void-black/85 backdrop-blur-md border-b border-white/5 opacity-0 pointer-events-none transition-all duration-300 transform -translate-y-2 select-none">
+    <div class="max-w-[720px] mx-auto px-4 py-3 flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <div class="relative shrink-0">
+          <img src="/assets/avatar-rahul.png" alt="Rahul Avatar" class="w-8 h-8 rounded-full border border-electric-indigo/20 object-cover" />
+          <span class="absolute bottom-0 right-0 w-2 h-2 rounded-full bg-emerald-500 border-2 border-void-black"></span>
+        </div>
+        <div>
+          <div class="font-sans text-xs md:text-sm font-semibold text-pale-wire leading-tight">Rahul Kushwaha</div>
+          <div class="font-mono text-[9px] text-muted-fog">active_now</div>
+        </div>
+      </div>
+      
+      <button id="scroll-to-top-btn" class="font-mono text-[10px] uppercase tracking-wider text-muted-fog hover:text-electric-indigo px-2.5 py-1 bg-white/5 border border-white/10 rounded-sm hover:border-electric-indigo/50 transition-all cursor-pointer">
+        ↑ top
+      </button>
+    </div>
+  </header>
+                <a href="https://rahulkushwaha.me" target="_blank" rel="noopener" class="flex items-center justify-center gap-2 px-5 py-3 border border-electric-indigo text-xs md:text-sm font-mono font-bold text-electric-indigo rounded-full bg-transparent hover:bg-electric-indigo hover:text-void-black active:scale-[0.95] transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-electric-indigo text-center">
+                  <span>🌐 Website</span>
+                </a>
+  <!-- Fixed Top Header (Messenger Style) -->
+  <header id="chat-header" class="fixed top-0 left-0 right-0 z-30 bg-void-black/85 backdrop-blur-md border-b border-white/5 opacity-0 pointer-events-none transition-all duration-300 transform -translate-y-2 select-none">
+    <div class="max-w-[720px] mx-auto px-4 py-3 flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <div class="relative shrink-0">
+          <img src="/assets/avatar-rahul.png" alt="Rahul Avatar" class="w-8 h-8 rounded-full border border-electric-indigo/20 object-cover" />
+          <span class="absolute bottom-0 right-0 w-2 h-2 rounded-full bg-emerald-500 border-2 border-void-black"></span>
+        </div>
+        <div>
+          <div class="font-sans text-xs md:text-sm font-semibold text-pale-wire leading-tight">Rahul Kushwaha</div>
+          <div class="font-mono text-[9px] text-muted-fog">active_now</div>
+        </div>
+      </div>
+      
+      <button id="scroll-to-top-btn" class="font-mono text-[10px] uppercase tracking-wider text-muted-fog hover:text-electric-indigo px-2.5 py-1 bg-white/5 border border-white/10 rounded-sm hover:border-electric-indigo/50 transition-all cursor-pointer">
+        ↑ top
+      </button>
+    </div>
+  </header>
+              </div>
+              
+              <!-- Bottom Row: Email (Full Width) -->
+              <a href="mailto:rahulkushwaha2206@gmail.com" class="w-full flex items-center justify-center gap-2 px-6 py-3 border border-electric-indigo text-[11px] sm:text-xs md:text-sm font-mono font-bold text-electric-indigo rounded-full bg-transparent hover:bg-electric-indigo hover:text-void-black active:scale-[0.95] transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-electric-indigo select-all text-center whitespace-nowrap">
+                <span>📧 rahulkushwaha2206@gmail.com</span>
+              </a>
+  <!-- Fixed Top Header (Messenger Style) -->
+  <header id="chat-header" class="fixed top-0 left-0 right-0 z-30 bg-void-black/85 backdrop-blur-md border-b border-white/5 opacity-0 pointer-events-none transition-all duration-300 transform -translate-y-2 select-none">
+    <div class="max-w-[720px] mx-auto px-4 py-3 flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <div class="relative shrink-0">
+          <img src="/assets/avatar-rahul.png" alt="Rahul Avatar" class="w-8 h-8 rounded-full border border-electric-indigo/20 object-cover" />
+          <span class="absolute bottom-0 right-0 w-2 h-2 rounded-full bg-emerald-500 border-2 border-void-black"></span>
+        </div>
+        <div>
+          <div class="font-sans text-xs md:text-sm font-semibold text-pale-wire leading-tight">Rahul Kushwaha</div>
+          <div class="font-mono text-[9px] text-muted-fog">active_now</div>
+        </div>
+      </div>
+      
+      <button id="scroll-to-top-btn" class="font-mono text-[10px] uppercase tracking-wider text-muted-fog hover:text-electric-indigo px-2.5 py-1 bg-white/5 border border-white/10 rounded-sm hover:border-electric-indigo/50 transition-all cursor-pointer">
+        ↑ top
+      </button>
+    </div>
+  </header>
+            </div>
+
+            <!-- Availability status indicator -->
+            <div class="flex items-center justify-center gap-2 font-sans italic text-[13px] text-muted-fog select-none pt-2">
+              <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 cursor-blink shrink-0"></span>
+              <span>Currently available for conversations.</span>
+            </div>
+          </div>
+          <img src="/assets/avatar-rahul.png" alt="Rahul Avatar" class="w-10 h-10 md:w-12 md:h-12 rounded-full border border-electric-indigo/20 object-cover shrink-0 select-none" />
+        </div>
+      </section>
+
+    </div>
+
+    <!-- Separator -->
+    <div class="w-full max-w-[720px] h-[1px] bg-white/5 my-6 select-none"></div>
+
+    <!-- FOOTER -->
+    <footer class="w-full max-w-[720px] px-6 py-12 flex flex-col items-center justify-center gap-2 text-center text-muted-fog font-mono text-xs select-none">
+      <p>Built by Rahul Kushwaha · 2026</p>
+      <a href="https://rahulkushwaha.me" target="_blank" rel="noopener" class="text-electric-indigo hover:underline">rahulkushwaha.me</a>
+    </footer>
+
+  </main>
+
+  <!-- JS Scripts -->
+  <script type="module" src="/src/main.js"></script>
+  <!-- Fixed Bottom Chat Input Mockup -->
+  <div id="chat-input-bar" class="fixed bottom-0 left-0 right-0 z-30 p-4 bg-gradient-to-t from-void-black via-void-black/95 to-transparent opacity-0 pointer-events-none transition-all duration-300 transform translate-y-2 select-none">
+    <div class="max-w-[720px] mx-auto">
+      <div class="w-full bg-deep-slate/90 backdrop-blur-md border border-white/10 rounded-full px-5 py-3.5 flex items-center justify-between text-muted-fog shadow-lg shadow-void-black/80">
+        <span class="text-xs md:text-sm font-mono text-muted-fog/60">Scroll down to continue conversation...</span>
+        <!-- Send button icon -->
+        <svg class="w-5 h-5 text-electric-indigo/60" fill="currentColor" viewBox="0 0 20 20">
+          <path d="M10.894 2.553a1 1 0 00-1.788 0l-7 14a1 1 0 001.169 1.409l5-1.429A1 1 0 009 15.571V11a1 1 0 112 0v4.571a1 1 0 00.725.962l5 1.428a1 1 0 001.17-1.408l-7-14z"></path>
+        </svg>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>
+
+

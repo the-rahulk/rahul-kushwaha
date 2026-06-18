@@ -1,0 +1,34 @@
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+
+# Vite cache
+.vite/
+
+# Environment files
+.env
+.env.local
+.env.*.local
+
+# Logs
+*.log
+npm-debug.log*
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/
+.idea/
+
+# Agent / AI tooling — NOT for public repo
+.agents/
+AGENTS.md
+CLAUDE.md
+GEMINI.md
+skills-lock.json
+DESIGN.md
+Rahul_Portfolio_PRD.md

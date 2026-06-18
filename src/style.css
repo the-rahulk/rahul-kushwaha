@@ -1,0 +1,235 @@
+@import "tailwindcss";
+
+@theme {
+  /* Font Family tokens */
+  --font-mono: "Space Mono", monospace;
+  --font-sans: "Inter", sans-serif;
+
+  /* Color tokens */
+  --color-void-black: #0A0A0F;
+  --color-deep-slate: #111118;
+  --color-electric-indigo: #6C63FF;
+  --color-pale-wire: #E8E6FF;
+  --color-muted-fog: #8C8AA0;
+  --color-ember: #FF7A4C;
+  --color-glass: rgba(255, 255, 255, 0.04);
+
+  /* Radius tokens (synthesized from DESIGN.md and PRD) */
+  --radius-xs: 5px;
+  --radius-sm: 8px;
+  --radius-md: 11px;
+  --radius-lg: 18px;
+  --radius-pill: 9999px;
+  --radius-full: 9999px;
+}
+
+/* Base style resets and customizations */
+html, body {
+  background-color: var(--color-void-black);
+  color: var(--color-pale-wire);
+  font-family: var(--font-sans);
+  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+  scroll-behavior: smooth;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-void-black);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-glass);
+  border-radius: var(--radius-xs);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(108, 99, 255, 0.3);
+}
+
+/* Selection Color styling */
+::selection {
+  background-color: rgba(108, 99, 255, 0.3);
+  color: var(--color-pale-wire);
+}
+
+/* Cursor Blink utility */
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+@utility cursor-blink {
+  animation: blink 1.1s step-end infinite;
+}
+
+/* Section transitions */
+.chat-section {
+  /* Instant display ensures typewriter text starts visibility from the first character */
+}
+
+/* Stagger reveals */
+.line-reveal {
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 0.3s ease-out, transform 0.3s ease-out;
+}
+
+.line-reveal.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Commit cards & badges styles */
+.commit-card {
+  border: 1px solid rgba(232, 230, 255, 0.08);
+  transition: border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.commit-card:hover {
+  border-color: rgba(108, 99, 255, 0.4);
+  transform: translateY(-2px);
+}
+
+/* 3D project cards initial and hover states */
+.project-card-container {
+  perspective: 1000px;
+}
+
+.project-card {
+  transform-style: preserve-3d;
+  transform: rotateX(8deg);
+  opacity: 0;
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out, border-color 0.2s ease;
+  border: 1px solid rgba(232, 230, 255, 0.08);
+}
+
+.project-card.revealed {
+  opacity: 1;
+  transform: rotateX(0deg);
+}
+
+.project-card:hover {
+  border-color: rgba(108, 99, 255, 0.4);
+}
+
+/* Badge shimmer animation */
+@keyframes shimmer {
+  0% { transform: translate(-100%, -100%) rotate(45deg); }
+  100% { transform: translate(100%, 100%) rotate(45deg); }
+}
+
+@utility badge-shimmer-effect {
+  position: relative;
+  overflow: hidden;
+  &::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(
+      to bottom right,
+      rgba(255, 255, 255, 0) 0%,
+      rgba(255, 255, 255, 0.0) 40%,
+      rgba(255, 255, 255, 0.08) 50%,
+      rgba(255, 255, 255, 0.0) 60%,
+      rgba(255, 255, 255, 0) 100%
+    );
+    transform: rotate(45deg);
+    transition: all 0.5s ease;
+    pointer-events: none;
+  }
+  &:hover::after {
+    animation: shimmer 1.2s ease-out forwards;
+  }
+}
+
+/* Strikethrough draw animation */
+@keyframes strikethrough {
+  from { width: 0; }
+  to { width: 100%; }
+}
+
+.strike-anim {
+  position: relative;
+  display: inline-block;
+}
+
+.strike-anim::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 55%;
+  height: 1px;
+  background-color: var(--color-muted-fog);
+  width: 0;
+}
+
+.strike-anim.struck::after {
+  animation: strikethrough 0.8s ease-out forwards;
+}
+
+/* Badge Rotating Border Rings */
+@keyframes spin-slow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes spin-slow-reverse {
+  from { transform: rotate(360deg); }
+  to { transform: rotate(0deg); }
+}
+
+@utility animate-spin-slow {
+  animation: spin-slow 20s linear infinite;
+}
+
+@utility animate-spin-slow-reverse {
+  animation: spin-slow-reverse 20s linear infinite;
+}
+
+/* Scroll snap for mobile devices */
+@media (max-width: 767px) {
+  .snap-container {
+    scroll-snap-type: y mandatory;
+  }
+  .snap-section {
+    scroll-snap-align: start;
+    scroll-margin-top: 10px;
+  }
+}
+
+/* Chat section locking for sequential scroll */
+.chat-section.locked {
+  display: none !important;
+}
+
+/* Reduced Motion Overrides */
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-delay: -1ms !important;
+    animation-duration: 1ms !important;
+    animation-iteration-count: 1 !important;
+    background-attachment: initial !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0s !important;
+    transition-delay: 0s !important;
+  }
+  .line-reveal {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+  .project-card {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+  .strike-anim::after {
+    width: 100% !important;
+    animation: none !important;
+  }
+}
