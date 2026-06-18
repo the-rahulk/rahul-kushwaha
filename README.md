@@ -1,6 +1,6 @@
 # Rahul Kushwaha — Portfolio
 
-> **Live:** [rahulkushwaha.dev](https://github.com/the-rahulk/rahul-kushwaha) *(deploy link goes here)*
+> **Live:** [rahulkushwaha.me](https://www.rahukushwaha.me) *(deploy link goes here)*
 
 A conversational, chat-style developer portfolio built with Vite + Tailwind CSS v4. Instead of a traditional resume layout, the site simulates an interview — questions appear one at a time as you scroll, and answers reveal with smooth animations.
 
@@ -97,8 +97,4 @@ Colours are defined as CSS custom properties in `src/style.css`:
 - **LinkedIn:** [linkedin.com/in/rahulkushwaha1922](https://www.linkedin.com/in/rahulkushwaha1922/)
 - **GitHub:** [github.com/the-rahulk](https://github.com/the-rahulk)
 
----
 
-## 📄 License
-
-MIT — feel free to fork and adapt for your own portfolio. Attribution appreciated but not required.
