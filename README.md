@@ -1,6 +1,6 @@
 # Rahul Kushwaha — Portfolio
 
-> **Live:** [rahulkushwaha.me](https://www.rahukushwaha.me) *(deploy link goes here)*
+> **Live:** [rahulkushwaha.in](https://www.rahukushwaha.in) 
 
 A conversational, chat-style developer portfolio built with Vite + Tailwind CSS v4. Instead of a traditional resume layout, the site simulates an interview — questions appear one at a time as you scroll, and answers reveal with smooth animations.
 
